@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgh_pages_test=self.webpackChunkgh_pages_test||[]).push([[324],{324:(e,s,h)=>{h.r(s),h.d(s,{default:()=>t});var a=h(184);const t=()=>(0,a.jsxs)(a.Fragment,{children:[(0,a.jsx)("h1",{children:"Index"}),(0,a.jsx)("p",{children:"This is a page"})]})}}]);
+//# sourceMappingURL=324.768cee6f.chunk.js.map

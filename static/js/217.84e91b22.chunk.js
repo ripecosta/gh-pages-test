@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgh_pages_test=self.webpackChunkgh_pages_test||[]).push([[217],{217:(e,s,t)=>{t.r(s),t.d(s,{default:()=>o});var h=t(87),l=t(184);const o=()=>(0,l.jsxs)("div",{children:[(0,l.jsx)("h2",{children:"It looks like you're lost..."}),(0,l.jsx)("p",{children:(0,l.jsx)(h.rU,{to:"/",children:"Go to the home page"})})]})}}]);
+//# sourceMappingURL=217.84e91b22.chunk.js.map
