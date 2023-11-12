@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const SomePage = () => {
+const SomePage = () => {
   return (
     <>
       <h1>Some Page</h1>
@@ -17,3 +17,5 @@ export const SomePage = () => {
     </>
   );
 };
+
+export default SomePage;

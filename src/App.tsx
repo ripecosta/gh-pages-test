@@ -1,9 +1,21 @@
-import { createHashRouter, Link, Outlet, RouterProvider } from 'react-router-dom';
-import { SomePage } from './pages/SomePage';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import { Index } from './pages/Index';
-import { AboutUs } from './pages/AboutUs';
-import { NotFound } from './errors/NotFound';
+
+import React from 'react';
+import { Layout } from './Layout';
+
+const Index = React.lazy(() => import('./pages/Index'));
+const AboutUs = React.lazy(() => import('./pages/AboutUs'));
+const SomePage = React.lazy(() => import('./pages/SomePage'));
+const NotFound = React.lazy(() => import('./errors/NotFound'));
+
+const Lazy = ({ Elem }: { Elem: React.LazyExoticComponent<() => JSX.Element> }): JSX.Element => {
+  return (
+    <React.Suspense fallback={<p>Loading...</p>}>
+      <Elem />
+    </React.Suspense>
+  );
+};
 
 const App = () => {
   const router = createHashRouter([
@@ -11,11 +23,11 @@ const App = () => {
       path: '/',
       element: <Layout />,
       children: [
-        { index: true, element: <Index /> },
-        { path: '/aboutus', element: <AboutUs /> },
-        { path: '/somepage', element: <SomePage /> },
+        { index: true, element: <Lazy Elem={Index} /> },
+        { path: '/aboutus', element: <Lazy Elem={AboutUs} /> },
+        { path: '/somepage', element: <Lazy Elem={SomePage} /> },
 
-        { path: '*', element: <NotFound /> },
+        { path: '*', element: <Lazy Elem={NotFound} /> },
       ],
     },
   ]);
@@ -24,29 +36,3 @@ const App = () => {
 };
 
 export default App;
-
-const Layout = () => {
-  return (
-    <>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/aboutus">About Us</Link>
-            </li>
-            <li>
-              <Link to="/somepage">Some Page</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <hr />
-
-        <Outlet />
-      </div>
-    </>
-  );
-};
